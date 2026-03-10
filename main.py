@@ -10,67 +10,71 @@ def login():
     print("Selamat Datang!\n")
 
     while True:
-        nama = input("Masukkan Nama: ")
+        nama = input("\33[0;49;37mMasukkan Nama: ")
         kelas = input("Masukkan Kelas dan Jurusan: ")
     
         if nama == nama_siswa and kelas == kelas_jurusan:
             print("")
-            print("Login berhasil!")
+            print("\33[1;49;36mLogin berhasil!\n")
             break
         else:
-            print("Nama/Kelas Tidak Valid!")
+            print("")
+            print("\33[1;49;31mNama/Kelas Tidak Valid!\n")
 
 # Create
 def tulis_kritiksaran():
     print("")
     print(f"Dari: {nama_siswa} / {kelas_jurusan}")
-    print("Ke: SMK Negeri 12 Surabaya")
+    print("Ke: SMK Negeri 12 Surabaya\n")
     tulis = input("Masukkan Kritik/Saran Anda untuk SMK Negeri 12 Surabaya:\n")
     hasil = {
         "tulis" : tulis
     }
     isi_kritiksaran.append(hasil)
     print("")
-    print("Terima Kasih Atas Kritik/Saran Yang Anda Berikan!")
+    print("\33[1;49;36mTerima Kasih Atas Kritik/Saran Yang Anda Berikan!\n")
 
 # Read
 def lihat_kritiksaran():
     print("")
     if len(isi_kritiksaran) == 0:
-        print("Kritik/Saran Tidak Tersedia!")
+        print("\33[1;49;33mKritik/Saran Tidak Tersedia!\n")
     else:
         print(">>> Kritik/Saran Untuk SMK Negeri 12 Surabaya <<<\n")
         for i, s in enumerate(isi_kritiksaran, start=1):
-            print(f"Kritik/Saran ke-{i}: {s['tulis']}")
+            print(f"Kritik/Saran ke-{i}:\n{s['tulis']}\n")
 
 # Update
 def edit_kritiksaran():
     lihat_kritiksaran()
     if len(isi_kritiksaran) > 0:
-        print("")
-        nomor = int(input("Pilih Kritik/Saran Yang Ingin Diganti: ")) -1
+        nomor = int(input("Pilih Nomor Kritik/Saran Yang Ingin Diubah: ")) -1
         if nomor < len(isi_kritiksaran):
-            tulis = input("Tulis Komentar Baru: ")
+            tulis = input("Tulis Kritik/Saran Baru: ")
             isi_kritiksaran[nomor]["tulis"] = tulis
             print("")
-            print("Kritik/Saran Telah Diedit!")
+            print("\33[1;49;36mKritik/Saran Berhasil Diubah!\n")
+        else:
+            print("")
+            print("\33[1;49;31mPilihan Tidak Valid!\n")
 
 # Delete
 def hapus_kritiksaran():
     lihat_kritiksaran()
     if len(isi_kritiksaran) > 0:
-        print("")
-        nomor = int(input("Pilih Kritik/Saran Yang Ingin Dihapus: ")) -1
+        nomor = int(input("Pilih Nomor Kritik/Saran Yang Ingin Dihapus: ")) -1
         if nomor < len(isi_kritiksaran):
             isi_kritiksaran.pop(nomor)
             print("")
-            print("Kritik/Saran Telah Dihapus!")
+            print("\33[1;49;36mKritik/Saran Berhasil Dihapus!\n")
+        else:
+            print("")
+            print("\33[1;49;31Pilihan Tidak Valid!\n")
 
 # Menu
 def menu():
     while True:
-        print("")
-        print(f"Halo, {nama_siswa}")
+        print(f"\33[0;49;37mHalo, {nama_siswa}")
         print("Apa yang anda akan lakukan hari ini?\n")
         print("1. Tulis Kritik/Saran")
         print("2. Lihat Kritik/Saran")
@@ -89,13 +93,13 @@ def menu():
         elif pilih == "4":
             hapus_kritiksaran()
         elif pilih == "5":
-            print("Sampai Jumpa!\n")
+            print("")
+            print("\33[1;49;33mSampai Jumpa!")
             break
         else:
-            print("Pilihan Tidak Valid!")
+            print("")
+            print("\33[1;49;31mPilihan Tidak Valid!\n")
 
 # Program
 login()
 menu()
-
-print("Program Selesai")
